@@ -1,57 +1,53 @@
 import Link from 'next/link';
-
-const why = [
-  ['Képzett felügyelők', 'Tapasztalt, referenciával rendelkező gyerekcsőszök és animátorok.'],
-  ['Egyedi programok', 'Kreatív foglalkozások, játékok és kézműveskedés az esemény hangulatához igazítva.'],
-  ['Hangulatos játszósarok', 'Kényelmes, esztétikus gyerekkuckó, ahol a kicsik is jól érzik magukat.'],
-];
+import { home } from '../content';
 
 export default function Home() {
+  const { hero, why, services, cta } = home;
   return (
-    <>
-      <section className="hero">
-        <div className="wrap">
-          <p className="eyebrow">Gyerekfelügyelet · Animáció · Rendezvények</p>
-          <h1>Ti ünnepeltek,<br />mi vigyázunk a kicsikre.</h1>
-          <p className="lead">A BestCare gondoskodó felügyeletet és játékos programokat biztosít esküvőkön, rendezvényeken és családi eseményeken, hogy minden vendég felhőtlenül szórakozhasson.</p>
-          <div className="actions">
-            <Link href="/urlap" className="btn">Tájékoztatást kérek</Link>
-            <Link href="/arlista" className="btn ghost">Árlista megtekintése</Link>
+      <>
+        <section className="hero">
+          <div className="wrap">
+            <p className="eyebrow">{hero.eyebrow}</p>
+            <h1>{hero.title}</h1>
+            <p className="lead">{hero.text}</p>
+            <div className="actions">
+              <Link href="/urlap" className="btn">{hero.primaryButton}</Link>
+              <Link href="/arlista" className="btn ghost">{hero.secondaryButton}</Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section>
-        <div className="wrap">
-          <p className="eyebrow">Miért a BestCare?</p>
-          <h2>Biztonság, figyelem, jókedv</h2>
-          <div className="grid">
-            {why.map(([t, d]) => (
-              <div className="card" key={t}><h3>{t}</h3><p>{d}</p></div>
-            ))}
+        <section>
+          <div className="wrap">
+            <p className="eyebrow">{why.eyebrow}</p>
+            <h2>{why.title}</h2>
+            <div className="grid">
+              {why.items.map((i) => (
+                  <div className="card" key={i.title}><h3>{i.title}</h3><p>{i.text}</p></div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="alt">
-        <div className="wrap two">
-          <div className="ph">Ide kerülhet egy fotó</div>
-          <div>
-            <p className="eyebrow">Szolgáltatásaink</p>
-            <h2>Minden eseményhez a megfelelő csomag</h2>
-            <p className="lead" style={{ marginBottom: '1.5rem' }}>Rövidebb családi összejövetelektől a teljes napos esküvőig: rugalmasan igazodunk az Ön igényeihez.</p>
-            <Link href="/szolgaltatasok" className="btn ghost">Tovább a szolgáltatásokhoz</Link>
+        <section className="alt">
+          <div className="wrap two">
+            <div className="ph">{services.photoText}</div>
+            <div>
+              <p className="eyebrow">{services.eyebrow}</p>
+              <h2>{services.title}</h2>
+              <p className="lead" style={{ marginBottom: '1.5rem' }}>{services.text}</p>
+              <Link href="/szolgaltatasok" className="btn ghost">{services.button}</Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="band">
-        <div className="wrap">
-          <h2>Kérjen ajánlatot még ma</h2>
-          <p className="lead">Töltse ki az űrlapot, és hamarosan elküldjük a részletes tájékoztatót az Ön eseményére szabva.</p>
-          <Link href="/urlap" className="btn">Tájékoztatás kérése</Link>
-        </div>
-      </section>
-    </>
+        <section className="band">
+          <div className="wrap">
+            <h2>{cta.title}</h2>
+            <p className="lead">{cta.text}</p>
+            <Link href="/urlap" className="btn">{cta.button}</Link>
+          </div>
+        </section>
+      </>
   );
 }

@@ -27,7 +27,7 @@ section { padding: 4.5rem 0; }
 
 /* header */
 .header { transition: box-shadow .35s ease, background .35s ease; position: sticky; top: 0; z-index: 10; background: var(--vilagos-bezs); border-bottom: 1px solid var(--homok); }
-.header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.header .wrap { display: flex; align-items: center; justify-content: space-between; height: 88px; }
 .logo { font-family: Georgia, serif; font-size: 1.5rem; text-decoration: none; letter-spacing: .02em; }
 .nav { display: flex; gap: 1.6rem; align-items: center; }
 .nav a { text-decoration: none; font-size: .95rem; color: var(--grafit); padding: .3rem 0; border-bottom: 1px solid transparent; }
@@ -80,7 +80,7 @@ section { padding: 4.5rem 0; }
 
 @media (max-width: 760px) {
   .menu-btn { display: block; }
-  .nav { display: none; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; background: var(--vilagos-bezs); border-bottom: 1px solid var(--homok); padding: 1rem 4%; }
+  .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; background: var(--vilagos-bezs); border-bottom: 1px solid var(--homok); padding: 1rem 4%; }
   .nav.open { display: flex; }
   .nav a { padding: .8rem 0; width: 100%; }
   .two, .form .row { grid-template-columns: 1fr; }
@@ -89,12 +89,12 @@ section { padding: 4.5rem 0; }
 
 /* ===== Logó ===== */
 .logo { display: inline-flex; align-items: center; }
-.logo-img { height: 46px; width: auto; display: block; transition: height .35s ease, transform .35s ease; }
+.logo-img { height: 64px; width: auto; display: block; transition: height .35s ease, transform .35s ease; }
 .logo:hover .logo-img { transform: scale(1.04); }
 .header .wrap { transition: height .35s ease; }
 .header.scrolled { box-shadow: 0 6px 24px rgba(8, 7, 6, .08); }
-.header.scrolled .wrap { height: 60px; }
-.header.scrolled .logo-img { height: 38px; }
+.header.scrolled .wrap { height: 72px; }
+.header.scrolled .logo-img { height: 52px; }
 
 /* ===== Menü animáció ===== */
 .nav a { position: relative; border-bottom: none; transition: color .25s ease; }
@@ -154,4 +154,13 @@ section { padding: 4.5rem 0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal, .hero .wrap > * { opacity: 1 !important; transform: none !important; }
+}
+
+/* sortörés a content.js-ben lévő \n jelekhez */
+h1, .pl { white-space: pre-line; }
+
+/* mobil: kisebb logó és fejléc (a fájl végén kell lennie) */
+@media (max-width: 760px) {
+  .logo-img, .header.scrolled .logo-img { height: 46px; }
+  .header .wrap, .header.scrolled .wrap { height: 70px; }
 }
